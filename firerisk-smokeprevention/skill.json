@@ -1,18 +1,37 @@
 {
-  "id": "firerisk_smoke_prevention",
+  "id": "firerisk_smokeprevention",
   "name": "Fire Risk - Smoke Prevention",
-  "description": "Reviews supplied site images for outdoor smoking facilities and non-smoking signage, then returns structured field results.",
+  "description": "Reviews supplied site files for outdoor smoking facilities and non-smoking signage, then returns structured field results.",
   "mcpServices": {
     "required": [],
     "optional": []
   },
   "inputParameters": [
     {
-      "name": "images",
-      "displayName": "Images",
+      "name": "files",
+      "displayName": "Files",
       "type": "array",
       "required": false,
-      "description": "One or more site images to review."
+      "description": "One or more files to review. Each file is represented as a JSON object containing the original filename, MIME type, and base64-encoded file bytes.",
+      "items": {
+        "type": "object",
+        "description": "A file supplied to the skill.",
+        "required": ["name", "mimeType", "data"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Original filename, for example site-photo.jpg, report.pdf, or data.json."
+          },
+          "mimeType": {
+            "type": "string",
+            "description": "File MIME type, for example image/jpeg, image/png, application/pdf, application/json, text/plain, or application/vnd.openxmlformats-officedocument.wordprocessingml.document."
+          },
+          "data": {
+            "type": "string",
+            "description": "Base64-encoded file bytes. Do not include a data URL prefix such as data:image/jpeg;base64,."
+          }
+        }
+      }
     }
   ],
   "outputParameter": [
@@ -23,7 +42,7 @@
       "value": [
         {
           "name": "smoke-facilities",
-          "description": "Is outdoor smoking facilities provided?",
+          "description": "Are outdoor smoking facilities provided?",
           "type": "yes/no",
           "value": null
         },
@@ -35,13 +54,13 @@
         },
         {
           "name": "smoke-signage",
-          "description": "Is non smoking signage visible?",
+          "description": "Is non-smoking signage visible?",
           "type": "yes/no",
           "value": null
         },
         {
           "name": "smoke-signage-comments",
-          "description": "Comments on the non smoking signage.",
+          "description": "Comments on the non-smoking signage.",
           "type": "string",
           "value": null
         }
