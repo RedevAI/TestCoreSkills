@@ -1,0 +1,11 @@
+# IDE/project-local files
+.idea/
+.vscode/
+
+# Build output
+bin/
+obj/
+
+# OS files
+.DS_Store
+Thumbs.db
