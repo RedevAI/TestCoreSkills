@@ -1,4 +1,4 @@
-# Instructions
+# Skill Instructions 
 
 Review the supplied images and answer the configured output fields relating to smoke prevention.
 
