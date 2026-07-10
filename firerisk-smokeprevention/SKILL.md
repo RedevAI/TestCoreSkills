@@ -29,9 +29,9 @@ Assess only what is visible in the supplied images. Do not assume facts about ar
 
 ## smoke-facilities
 
-Return `yes` when images show visible outdoor smoking facilities, such as a dedicated smoking shelter, wall-mounted ashtray, smoking bin, or clearly designated smoking area.
+Return `true` when images show visible outdoor smoking facilities, such as a dedicated smoking shelter, wall-mounted ashtray, smoking bin, or clearly designated smoking area.
 
-Return `no` only when the images clearly show the relevant outdoor or communal area and there is sufficient visual evidence that no smoking facilities are provided.
+Return `false` only when the images clearly show the relevant outdoor or communal area and there is sufficient visual evidence that no smoking facilities are provided.
 
 Return an empty value when the images do not show the relevant area clearly enough.
 
@@ -43,9 +43,9 @@ If the answer cannot be confirmed, briefly explain why the images are insufficie
 
 ## smoke-signage
 
-Return `yes` when images show visible non-smoking signage.
+Return `true` when images show visible non-smoking signage.
 
-Return `no` only when the images clearly show the relevant entrance, corridor, stairwell, or common area where signage would be expected and there is sufficient visual evidence that signage is not visible.
+Return `false` only when the images clearly show the relevant entrance, corridor, stairwell, or common area where signage would be expected and there is sufficient visual evidence that signage is not visible.
 
 Return an empty value when the images do not show the relevant area clearly enough.
 
