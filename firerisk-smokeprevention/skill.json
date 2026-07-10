@@ -43,7 +43,7 @@
         {
           "name": "smoke-facilities",
           "description": "Are outdoor smoking facilities provided?",
-          "type": "yes/no",
+          "type": "boolean",
           "value": null
         },
         {
@@ -55,7 +55,7 @@
         {
           "name": "smoke-signage",
           "description": "Is non-smoking signage visible?",
-          "type": "yes/no",
+          "type": "boolean",
           "value": null
         },
         {
