@@ -43,25 +43,25 @@
         {
           "name": "smoke-facilities",
           "description": "Are outdoor smoking facilities provided?",
-          "type": "boolean",
+          "type": ["boolean", "null"],
           "value": null
         },
         {
           "name": "smoke-facilities-comments",
           "description": "Comments on the smoking facilities.",
-          "type": "string",
+          "type":  ["string", "null"],
           "value": null
         },
         {
           "name": "smoke-signage",
           "description": "Is non-smoking signage visible?",
-          "type": "boolean",
+          "type": ["boolean", "null"],
           "value": null
         },
         {
           "name": "smoke-signage-comments",
           "description": "Comments on the non-smoking signage.",
-          "type": "string",
+          "type":  ["string", "null"],
           "value": null
         }
       ]
