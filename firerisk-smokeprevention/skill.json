@@ -2,7 +2,7 @@
   "id": "firerisk_smokeprevention",
   "name": "Fire Risk - Smoke Prevention",
   "description": "Reviews supplied site files for outdoor smoking facilities and non-smoking signage, then returns structured field results.",
-  "modelClass": "Reasoning",
+  "modelClass": "Standard",
   "mcpServices": {
     "required": [],
     "optional": []
