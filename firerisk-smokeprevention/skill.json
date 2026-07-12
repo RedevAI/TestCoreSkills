@@ -1,68 +1,66 @@
 {
-  "id": "firerisk_smokeprevention",
-  "name": "Fire Risk - Smoke Prevention",
-  "description": "Reviews supplied site files for outdoor smoking facilities and non-smoking signage, then returns structured field results.",
-  "modelClass": "Standard",
-  "mcpServers": [],
-  "inputParameters": [
-    {
-      "name": "files",
-      "displayName": "Files",
-      "type": "array",
-      "required": false,
-      "description": "One or more files to review. Each file is represented as a JSON object containing the original filename, MIME type, and base64-encoded file bytes.",
-      "items": {
-        "type": "object",
-        "description": "A file supplied to the skill.",
-        "required": ["name", "mimeType", "data"],
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Original filename, for example site-photo.jpg, report.pdf, or data.json."
-          },
-          "mimeType": {
-            "type": "string",
-            "description": "File MIME type, for example image/jpeg, image/png, application/pdf, application/json, text/plain, or application/vnd.openxmlformats-officedocument.wordprocessingml.document."
-          },
-          "data": {
-            "type": "string",
-            "description": "Base64-encoded file bytes. Do not include a data URL prefix such as data:image/jpeg;base64,."
+    "id": "firerisk_smokeprevention",
+    "name": "Fire Risk - Smoke Prevention",
+    "description": "Reviews supplied site files for outdoor smoking facilities and non-smoking signage, then returns structured field results.",
+    "modelClass": "Standard",
+    "mcpServers": [],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "description": "One or more files to review. Each file is represented as a JSON object containing the original filename, MIME type, and base64-encoded file bytes.",
+          "items": {
+            "type": "object",
+            "description": "A file supplied to the skill.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Original filename, for example site-photo.jpg, report.pdf, or data.json."
+              },
+              "mimeType": {
+                "type": "string",
+                "description": "File MIME type, for example image/jpeg, image/png, application/pdf, application/json, text/plain, or application/vnd.openxmlformats-officedocument.wordprocessingml.document."
+              },
+              "data": {
+                "type": "string",
+                "description": "Base64-encoded file bytes. Do not include a data URL prefix such as data:image/jpeg;base64,."
+              }
+            },
+            "required": ["name", "mimeType", "data"],
+            "additionalProperties": false
           }
         }
-      }
-    }
-  ],
-  "outputParameter": [
-    {
-      "name": "resultFields",
-      "description": "Structured result fields returned by the skill.",
-      "type": "array",
-      "value": [
-        {
-          "name": "smoke-facilities",
-          "description": "Are outdoor smoking facilities provided?",
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "smokeFacilities": {
           "type": ["boolean", "null"],
-          "value": null
+          "description": "Whether outdoor smoking facilities are visible."
         },
-        {
-          "name": "smoke-facilities-comments",
-          "description": "Comments on the smoking facilities.",
-          "type":  ["string", "null"],
-          "value": null
+        "smokeFacilitiesComments": {
+          "type": ["string", "null"],
+          "description": "Visible evidence for smoking facilities, or null."
         },
-        {
-          "name": "smoke-signage",
-          "description": "Is non-smoking signage visible?",
+        "smokeSignage": {
           "type": ["boolean", "null"],
-          "value": null
+          "description": "Whether non-smoking signage is visible."
         },
-        {
-          "name": "smoke-signage-comments",
-          "description": "Comments on the non-smoking signage.",
-          "type":  ["string", "null"],
-          "value": null
+        "smokeSignageComments": {
+          "type": ["string", "null"],
+          "description": "Visible evidence for signage, or null."
         }
-      ]
+      },
+      "required": [
+        "smokeFacilities",
+        "smokeFacilitiesComments",
+        "smokeSignage",
+        "smokeSignageComments"
+      ],
+      "additionalProperties": false
     }
-  ]
-}
+  }
