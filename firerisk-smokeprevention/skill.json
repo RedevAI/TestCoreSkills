@@ -39,78 +39,55 @@
       "type": "object",
       "properties": {
         "fields": {
-          "type": "array",
-          "description": "Structured result fields returned by the skill.",
-          "prefixItems": [
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "const": "smokeFacilities"
+            "type": "array",
+            "description": "Structured result fields returned by the skill.",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": { "const": "smokeFacilities" },
+                    "description": { "const": "Are outdoor smoking facilities provided?" },
+                    "value": { "type": ["boolean", "null"] }
+                  },
+                  "required": ["name", "description", "value"],
+                  "additionalProperties": false
                 },
-                "description": {
-                  "const": "Are outdoor smoking facilities provided?"
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": { "const": "smokeFacilitiesComments" },
+                    "description": { "const": "Comments on the smoking facilities." },
+                    "value": { "type": ["string", "null"] }
+                  },
+                  "required": ["name", "description", "value"],
+                  "additionalProperties": false
                 },
-                "value": {
-                  "type": ["boolean", "null"]
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": { "const": "smokeSignage" },
+                    "description": { "const": "Is non-smoking signage visible?" },
+                    "value": { "type": ["boolean", "null"] }
+                  },
+                  "required": ["name", "description", "value"],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": { "const": "smokeSignageComments" },
+                    "description": { "const": "Comments on the non-smoking signage." },
+                    "value": { "type": ["string", "null"] }
+                  },
+                  "required": ["name", "description", "value"],
+                  "additionalProperties": false
                 }
-              },
-              "required": ["name", "description", "value"],
-              "additionalProperties": false
+              ]
             },
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "const": "smokeFacilitiesComments"
-                },
-                "description": {
-                  "const": "Comments on the smoking facilities."
-                },
-                "value": {
-                  "type": ["string", "null"]
-                }
-              },
-              "required": ["name", "description", "value"],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "const": "smokeSignage"
-                },
-                "description": {
-                  "const": "Is non-smoking signage visible?"
-                },
-                "value": {
-                  "type": ["boolean", "null"]
-                }
-              },
-              "required": ["name", "description", "value"],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "const": "smokeSignageComments"
-                },
-                "description": {
-                  "const": "Comments on the non-smoking signage."
-                },
-                "value": {
-                  "type": ["string", "null"]
-                }
-              },
-              "required": ["name", "description", "value"],
-              "additionalProperties": false
-            }
-          ],
-          "items": false,
-          "minItems": 4,
-          "maxItems": 4
-        }
+            "minItems": 4,
+            "maxItems": 4
+          }
       },
       "required": ["fields"],
       "additionalProperties": false
