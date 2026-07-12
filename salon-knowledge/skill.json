@@ -1,1 +1,66 @@
-
+{
+  "id": "salontracker_support_kb",
+  "name": "Salon Tracker Support Knowledge Base",
+  "description": "Queries the Salon Tracker support knowledge base and returns structured results with optional artifact references.",
+  "modelClass": "Standard",
+  "mcpServers": [
+    {
+      "serverLabel": "SalonTrackerSupportKB",
+      "serverUrl": "https://api-redev.agentflowhub.com/mcp/17061941-9c6e-4c5a-8b4f-6e927111908",
+      "allowedTools": [],
+      "requireApproval": false,
+      "isEssential": true
+    }
+  ],
+  "inputParameters": [
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "required": true,
+      "description": "Query about information that relates to the Salon Tracker knowledge base."
+    }
+  ],
+  "outputParameter": [
+    {
+      "name": "results",
+      "description": "Structured results returned from the Salon Tracker support knowledge base.",
+      "type": "array",
+      "value": [
+        {
+          "name": "result",
+          "description": "A result returned from the Salon Tracker support knowledge base.",
+          "type": "object",
+          "required": [
+            "name",
+            "description"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "A short name describing the general result."
+            },
+            "description": {
+              "type": "string",
+              "description": "The detailed result returned from the knowledge base."
+            },
+            "artifactName": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "The name of an artifact associated with the result, or null when no artifact is available."
+            },
+            "artifactUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "The URL of an artifact associated with the result, or null when no artifact is available."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
